@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+{% include 'header.html' %}
+
+<div class="container">
+  <h4> {{ form_title }} </h4>
+  <form action="" method="post" role="form" class="form-inline">
+    {{ form.csrf }}
+
+      <label class="mr-sm-2 mb-0 sr-only" for="ipv4">IPv4:</label>
+      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="ipv4" name="ipv4" placeholder="IPv4" value={{working_ipv4}}>
+
+      <label class="mr-sm-2 mb-0 sr-only" for="prefixlen">Base prefix length:</label>
+      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="prefixlen" name="prefixlen" placeholder="base prefix len" value={{working_prefixlen}}>
+
+      {% if form_title == 'Subnets' %}
+      <label class="mr-sm-2 mb-0 sr-only" for="new_prefixlen">New prefix length:</label>
+      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="new_prefixlen" name="new_prefixlen" placeholder="new prefix len" value='26'>
+      <label class="mr-sm-2 mb-0 sr-only" for="new_prefixlen">New prefix length:</label>
+      {% endif %}
+
+      {% if form_title == 'Subnets-csv' %}
+      <label class="mr-sm-2 mb-0 sr-only" for="new_prefixlen">New prefix length:</label>
+      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="new_prefixlen" name="new_prefixlen" placeholder="new prefix len" value='26'>
+      <label class="mr-sm-2 mb-0 sr-only" for="new_prefixlen">New prefix length:</label>
+      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="netbox_text" name="netbox_text" placeholder="netbox prefix import", value=", active">
+      {% endif %}
+
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <br>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+
+    {% if messages %}
+
+      {% for message in messages %}
+
+        {% if "Error" not in message[1]: %}
+          <div class="alert alert-info">
+            <strong> {{ message[1] }} </strong>
+          </div>
+
+          {% if results %}
+            <div class="table-responsive">
+
+                  {{ results }}
+            </div>
+          {% endif %}
+
+        {% endif %}
+
+            {% if "Error" in message[1]: %}
+              <div class="alert alert-warning">
+                  <strong> {{ message[1] }} </strong>
+                  {% for item in form.errors %}
+                      <li>{{form.errors[item][0]}}</li>
+                  {% endfor %}
+              </div>
+            {% endif %}
+
+      {% endfor %}
+
+    {% endif %}
+
+  {% endwith %}
+
+</div>

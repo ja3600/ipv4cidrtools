@@ -1,22 +1,21 @@
-# cidrtools
-As a learning excercise I wrote this Flask app utilizing the awesome netaddr Python library. Designed as subnetting tool for network engineers.
+# ipv4cidrtools
+*CIDRTools* is an app to assist in network IPv4 address planning/design. 
 
 # About
-*CIDR Tools* is an app to assist in network address planning/design. I wanted to learn the basics of writing a python-based web application and at the same time have a simple tool to use.  This application has the following functions:
+As a learning excercise, I wrote this Flask/Python app utilizing the awesome netaddr library. Designed as subnetting tool for network engineers. This application has the following functions:
 - Disector - this takes any IPv4 address in CIDR form and shows details about it
 - Subnet - is used to break up a parent network into subnets based on a new desired prefix length
 - Supernet - is to show what parent networks a subnet belongs to
 - Summary - given a list of hosts and/or networks, produce the summary prefix(s)
-- Splitnet (in progress) - show the prefix summaries after splitting up a prefix
+- Splitnet - show the prefix summaries after splitting up a prefix
 
-The results are provided in an HTML table, so data is easily cut/paste into a spreadsheet or other forms of documentation.
+The results are provided in an HTML table, so data is easily copied into a spreadsheet or other forms of documentation.
 
 # Screenshot
 ![Screenshot](app.png "Screenshot")
 
 # Future Plans
 Create forms to generate complex IP address design schemas base on a design template. For example, a design template could represent a branch office, floors in a building or large campus.  The addressing schemas could then be imported into an IPAM solution such as Netbox or Infoblox.  
-
 
 # Container Install and Setup
 

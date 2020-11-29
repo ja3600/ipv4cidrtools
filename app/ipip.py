@@ -34,6 +34,24 @@ def ip_summary(ip_list):
 
 
 
+def ip_split(ip_list1, ip_list2):
+
+    results = []
+    merged_list = []
+
+    try:
+        merged_list = cidr_merge(ip_list1.split('\r\n'))
+    except:
+        results.append(dict(name='Well, something went wrong with the list of IPs', value="error on input"))
+        return(results)
+    else:
+        count = 0
+        for item in merged_list:
+            results.append(dict(name=str(count), value=item))
+            count = count + 1
+        return(results)
+
+
 
 def ip_subnet(basecidr, childcidr, netbox_text):
 

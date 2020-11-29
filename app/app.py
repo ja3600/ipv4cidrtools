@@ -16,7 +16,11 @@ from flask import Flask, render_template, flash, request
 from wtforms import Form, StringField, IntegerField, TextAreaField, validators
 from flask_table import Table, Col
 
-from .ipip import *
+# containerized app
+# from .ipip import *
+
+# deveploment
+from ipip import *
 
 # App config.
 
@@ -87,6 +91,15 @@ class SubnetFormCSV(Form):
 
 class SummaryForm(Form):
     ip_list = TextAreaField('ip_list', render_kw={'class': 'form-control', 'rows': '55'},
+        validators=[validators.required()])
+
+class SplitnetForm(Form):
+    # this is the source prefix lists (bigger summary)
+    ip_list1 = TextAreaField('ip_list1', render_kw={'class': 'form-control', 'rows': '25'},
+        validators=[validators.required()])
+
+    # this is the list of prefixes to split out from the source
+    ip_list2 = TextAreaField('ip_list2', render_kw={'class': 'form-control', 'rows': '25'},
         validators=[validators.required()])
 
 
@@ -306,6 +319,42 @@ def summary_tool():
                             form=form,
                             results=table_results,
                             form_title='Summarization')
+
+
+
+@app.route("/splitnet", methods=['GET', 'POST'])
+def splitnet_tool():
+    form = SplitnetForm(request.form)
+    results = []
+    table_results = []
+
+    print (form.errors)
+
+    if request.method == 'POST':
+        ip_list1 = request.form['ip_list1']
+        ip_list2 = request.form['ip_list2']
+        # print("LIST:", ip_list.split('\r\n'))
+
+        if form.validate():
+        # Save the comment here.
+
+            flash('Split up Results.')
+
+            results = ip_split(ip_list1, ip_list2)
+
+            print(results)
+            # Create a table from the returned dictionary of items
+            table_results = TwoColTable(results)
+            # print(table_results.__html__())
+
+        else:
+            flash('Error: Invalid input!')
+
+    return render_template('splitnet_form.html',
+                            form=form,
+                            results=table_results,
+                            form_title='Split prefixes')
+
 
 
 if __name__ == "__main__":

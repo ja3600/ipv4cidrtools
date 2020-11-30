@@ -2,12 +2,17 @@
 
 '''
 
-CIDRTOOLS ver 1.0
+ CIDRTOOLS ver 1.0
 
  Web app to help with working with IP subnets
  Based on Flask web application framework
 
  Github: https://github.com/ja3600/cidrtools
+
+ John 1:14  And the Word became flesh and dwelt among us,
+            and we beheld His glory, the glory as of the only
+            begotten of the Father, full of grace and truth.
+
 
 '''
 
@@ -340,7 +345,7 @@ def splitnet_tool():
 
             flash('Split up Results.')
 
-            results = ip_split(ip_list1, ip_list2)
+            results = ip_splitnet(ip_list1, ip_list2)
 
             print(results)
             # Create a table from the returned dictionary of items

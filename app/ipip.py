@@ -1,9 +1,13 @@
 #!/usr/bin/python
 
 '''
-ipip.py -- netaddr functions used by cidrtools application
+ CIDRTOOLS ver 1.0
 
-
+ ipip.py -- netaddr functions used by cidrtools application
+ 
+ Psalm 136:1    Oh, give thanks to the Lord, for He is good!
+                For His mercy endures forever.
+ 
 '''
 
 # Network specific stuff
@@ -34,19 +38,19 @@ def ip_summary(ip_list):
 
 
 
-def ip_split(ip_list1, ip_list2):
+def ip_splitnet(ip_list1, ip_list2):
 
     results = []
-    merged_list = []
+    excluded_list = []
 
     try:
-        merged_list = cidr_merge(ip_list1.split('\r\n'))
+        excluded_list = cidr_exclude(ip_list1.split('\r\n'), ip_list2.split('\r\n') )
     except:
         results.append(dict(name='Well, something went wrong with the list of IPs', value="error on input"))
         return(results)
     else:
         count = 0
-        for item in merged_list:
+        for item in excluded_list:
             results.append(dict(name=str(count), value=item))
             count = count + 1
         return(results)

@@ -41,9 +41,12 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 # Global variables
 
-#default subnet
+# Globally defined form variables (allow these to be saved across forms)
 working_ipv4 = "192.168.10.0"
 working_prefixlen = 24
+working_target = "192.168.0.0/24"
+working_exclude = "192.168.32.0/27"
+
 
 # Declare classes, tables/forms
 
@@ -333,14 +336,20 @@ def exclude_tool():
     results = []
     table_results = []
 
+    # must use the global keyword for these global variable
+    global working_target
+    global working_exclude
+
     print (form.errors)
 
     if request.method == 'POST':
         target = request.form['target']
         exclude = request.form['exclude']
-        
-        print("target:", target)
-        print("exclude:", exclude)        
+
+
+
+        # print("target:", target)
+        # print("exclude:", exclude)        
 
         if form.validate():
         # Save the comment here.

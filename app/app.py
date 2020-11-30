@@ -338,7 +338,9 @@ def splitnet_tool():
     if request.method == 'POST':
         ip_list1 = request.form['ip_list1']
         ip_list2 = request.form['ip_list2']
-        # print("LIST:", ip_list.split('\r\n'))
+        
+        print("LIST1:", ip_list1.split('\r\n'))
+        print("LIST2:", ip_list2.split('\r\n'))        
 
         if form.validate():
         # Save the comment here.

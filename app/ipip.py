@@ -11,7 +11,7 @@
 '''
 
 # Network specific stuff
-from netaddr import IPNetwork, IPAddress, cidr_merge
+from netaddr import IPNetwork, IPAddress, cidr_merge, cidr_exclude
 #from netaddr import *
 
 # Basic python stuff
@@ -38,19 +38,18 @@ def ip_summary(ip_list):
 
 
 
-def ip_splitnet(ip_list1, ip_list2):
+def ip_exclude(target, exclude):
 
     results = []
-    excluded_list = []
 
     try:
-        excluded_list = cidr_exclude(ip_list1.split('\r\n'), ip_list2.split('\r\n') )
+        network_list = cidr_exclude(target, exclude)
     except:
         results.append(dict(name='Well, something went wrong with the list of IPs', value="error on input"))
         return(results)
     else:
         count = 0
-        for item in excluded_list:
+        for item in network_list:
             results.append(dict(name=str(count), value=item))
             count = count + 1
         return(results)

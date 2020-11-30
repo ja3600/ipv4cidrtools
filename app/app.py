@@ -98,13 +98,13 @@ class SummaryForm(Form):
     ip_list = TextAreaField('ip_list', render_kw={'class': 'form-control', 'rows': '55'},
         validators=[validators.required()])
 
-class SplitnetForm(Form):
-    # this is the source prefix lists (bigger summary)
-    ip_list1 = TextAreaField('ip_list1', render_kw={'class': 'form-control', 'rows': '25'},
+class ExcludeForm(Form):
+    # this is the source prefix lists (target)
+    target = TextAreaField('target', render_kw={'class': 'form-control', 'rows': '25'},
         validators=[validators.required()])
 
-    # this is the list of prefixes to split out from the source
-    ip_list2 = TextAreaField('ip_list2', render_kw={'class': 'form-control', 'rows': '25'},
+    # this is the list of prefixes remaining once excluded prefix is removed from the target
+    exclude = TextAreaField('exclude', render_kw={'class': 'form-control', 'rows': '25'},
         validators=[validators.required()])
 
 
@@ -327,27 +327,27 @@ def summary_tool():
 
 
 
-@app.route("/splitnet", methods=['GET', 'POST'])
-def splitnet_tool():
-    form = SplitnetForm(request.form)
+@app.route("/exclude", methods=['GET', 'POST'])
+def exclude_tool():
+    form = ExcludeForm(request.form)
     results = []
     table_results = []
 
     print (form.errors)
 
     if request.method == 'POST':
-        ip_list1 = request.form['ip_list1']
-        ip_list2 = request.form['ip_list2']
+        target = request.form['target']
+        exclude = request.form['exclude']
         
-        print("LIST1:", ip_list1.split('\r\n'))
-        print("LIST2:", ip_list2.split('\r\n'))        
+        print("target:", target)
+        print("exclude:", exclude)        
 
         if form.validate():
         # Save the comment here.
 
-            flash('Split up Results.')
+            flash('List of target networks remaining after exclusion.')
 
-            results = ip_splitnet(ip_list1, ip_list2)
+            results = ip_exclude(target, exclude)
 
             print(results)
             # Create a table from the returned dictionary of items
@@ -357,10 +357,10 @@ def splitnet_tool():
         else:
             flash('Error: Invalid input!')
 
-    return render_template('splitnet_form.html',
+    return render_template('exclude_form.html',
                             form=form,
                             results=table_results,
-                            form_title='Split prefixes')
+                            form_title='CIDR Exclude')
 
 
 

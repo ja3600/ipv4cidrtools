@@ -8,10 +8,11 @@
 
   <form action="" method="post" role="form" class="form-inline">
     {{ form.csrf }}
-  <label class="mr-sm-2 mb-0" for="ip_list1">Source prefixes:</label>
-  <label class="mr-sm-2 mb-0" for="ip_list2">Prefixes to split from source:</label>
-  <textarea class="form-control mr-sm-4 mt-2 mb-2 mb-sm-2" rows="8" cols="30" name="ip_list", type="text"></textarea>
-      <button type="submit" class="btn btn-success">Submit</button>
+    <label class="mr-sm-2 mb-0" for="ip_list1">Source prefixes:</label>
+    <label class="mr-sm-2 mb-0" for="ip_list2">Prefixes to split from source:</label>
+    <textarea class="form-control mr-sm-4 mt-2 mb-2 mb-sm-2" rows="4" cols="15" name="ip_list1", type="text"></textarea>
+    <textarea class="form-control mr-sm-4 mt-2 mb-2 mb-sm-2" rows="4" cols="30" name="ip_list2", type="text"></textarea>
+    <button type="submit" class="btn btn-success">Submit</button>
   </form>
 
   <br>

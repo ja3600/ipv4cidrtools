@@ -45,7 +45,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 working_ipv4 = "192.168.10.0"
 working_prefixlen = 24
 working_target = "192.168.0.0/24"
-working_exclude = "192.168.32.0/27"
+working_exclude = "192.168.0.32/27"
 
 
 # Declare classes, tables/forms

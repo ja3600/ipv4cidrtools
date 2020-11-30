@@ -346,13 +346,14 @@ def exclude_tool():
         target = request.form['target']
         exclude = request.form['exclude']
 
-
-
         # print("target:", target)
         # print("exclude:", exclude)        
 
         if form.validate():
         # Save the comment here.
+
+            working_target = target
+            working_exclude = exclude
 
             flash('List of target networks remaining after exclusion.')
 
@@ -369,6 +370,8 @@ def exclude_tool():
     return render_template('exclude_form.html',
                             form=form,
                             results=table_results,
+                            working_target=working_target,
+                            working_exclude=working_exclude,                            
                             form_title='CIDR Exclude')
 
 

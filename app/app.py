@@ -138,12 +138,12 @@ def subc_tool():
     table_results = []
     name = 'Sub-Class C Tables'
 
-    for hostbits in range(25,30):
-        subnetbits = 32 - hostbits
-        subnetblocksize = 2 ^ subnetbits
-
-        for block in range(0, 256, subnetblocksize):
+    for hostbit in range(25,30):
+        netbits = 32 - hostbit
+        blocksize = 2 ** netbits
+        for block in range(0, 256, blocksize):
             results.append(dict(network=block, hosts=block+1))
+
     
     # Create a table from the returned dictionary of items
     table_results = SubCTable(results)

@@ -141,9 +141,9 @@ def subc_tool():
     for hostbit in range(25,31):
         netbits = 32 - hostbit
         blocksize = 2 ** netbits
-        results.append(dict(network='For' + hostbit + 'host bits', hosts='For' + netbits + 'network bits'))
+        results.append(dict(network='** For ' + str(hostbit) + ' host bits **', hosts='** For ' + str(netbits) + ' network bits **'))
         for block in range(0, 256, blocksize):
-            results.append(dict(network=block, hosts=block+1+' '+block+block-1))
+            results.append(dict(network=block, hosts=block + 1 + ' ' + block + block - 1))
 
     
     # Create a table from the returned dictionary of items

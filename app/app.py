@@ -50,9 +50,9 @@ working_exclude = "192.168.0.32/27"
 
 # Declare classes, tables/forms
 
-class TwoColTable(Table):
-    name = Col('item')
-    value = Col('value')
+class TwoColTable(Table, name, value):
+    name = Col(name)     # header for column 1
+    value = Col(value)   # header for column 2
     classes = ['table', 'table-sm']
 
 class SubnetTable(Table):
@@ -134,7 +134,7 @@ def subc_tool():
     results.append(dict(name='row 2 name column', value='value column'))
 
     # Create a table from the returned dictionary of items
-    table_results = TwoColTable(results)
+    table_results = TwoColTable(results, name='item', value='value')
 
     return render_template('basic_table.html',
                             results=table_results,
@@ -167,7 +167,7 @@ def disect_tool():
             results = ip_disector(cidr)
 
             # Create a table from the returned dictionary of items
-            table_results = TwoColTable(results)
+            table_results = TwoColTable(results, name='item', value='value')
             #print(table_results.__html__())
 
             #save the working address and prefix
@@ -300,7 +300,7 @@ def supernet_tool():
             results = ip_supernet(cidr)
 
             # Create a table from the returned dictionary of items
-            table_results = TwoColTable(results)
+            table_results = TwoColTable(results, name='item', value='value')
             #print(table_results.__html__())
 
             #save the working address and prefix
@@ -340,7 +340,7 @@ def summary_tool():
 
             print(results)
             # Create a table from the returned dictionary of items
-            table_results = TwoColTable(results)
+            table_results = TwoColTable(results, name='item', value='value')
             # print(table_results.__html__())
 
         else:
@@ -384,7 +384,7 @@ def exclude_tool():
 
             print(results)
             # Create a table from the returned dictionary of items
-            table_results = TwoColTable(results)
+            table_results = TwoColTable(results, name='item', value='value')
             # print(table_results.__html__())
 
         else:

@@ -141,7 +141,7 @@ def subc_tool():
     for hostbit in range(25,31):
         netbits = 32 - hostbit
         blocksize = 2 ** netbits
-        results.append(dict(network='', hosts='')
+        results.append(dict(network='', hosts=''))
         results.append(dict(network=str(hostbit) + ' HOST BITS', hosts=''))
         for block in range(0, 256, blocksize):
             results.append(dict(network=block, hosts=str(block + 1) + ' | ' + str(block + blocksize - 2)))

@@ -116,8 +116,8 @@ class ExcludeForm(Form):
 @app.route('/')
 @app.route('/index')
 def index():
-    # name = 'Subnet Table'
-    return render_template('index.html', form_title='Subnet Table')
+    name = 'Subnet Table'
+    return render_template('index.html', form_title=name)
 
 
 
@@ -126,7 +126,7 @@ def subc_tool():
 
     results = []
     table_results = []
-    # name = 'Sub-Class C Tables'
+    name = 'Sub-Class C Tables'
 
     results = []
 
@@ -138,7 +138,7 @@ def subc_tool():
 
     return render_template('basic_table.html',
                             results=table_results,
-                            form_title='Sub-Class C Tables')
+                            form_title=name)
 
 
 

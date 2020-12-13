@@ -51,8 +51,8 @@ working_exclude = "192.168.0.32/27"
 # Declare classes, tables/forms
 
 class TwoColTable(Table):
-    #name = Col('item')     # header for column 1
-    #value = Col('value')   # header for column 2
+    name = Col('item')     # header for column 1
+    value = Col('value')   # header for column 2
     classes = ['table', 'table-sm']
 
 class SubnetTable(Table):
@@ -134,7 +134,7 @@ def subc_tool():
     results.append(dict(name='row 2 name column', value='value column'))
 
     # Create a table from the returned dictionary of items
-    table_results = TwoColTable(results, options={'name': 'poop', 'value':'pee'})
+    table_results = TwoColTable(results)
 
     return render_template('basic_table.html',
                             results=table_results,

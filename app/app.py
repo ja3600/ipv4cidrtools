@@ -116,15 +116,29 @@ class ExcludeForm(Form):
 @app.route('/')
 @app.route('/index')
 def index():
-    name = 'Subnet Table'
-    return render_template('index.html', title='Subnet Table')
+    # name = 'Subnet Table'
+    return render_template('index.html', form_title='Subnet Table')
 
 
 
 @app.route('/subc')
-def subc():
-    name = 'Sub-Class C Tables'
-    return render_template('subc.html', title='Sub-Class C Tables')
+def subc_tool():
+
+    results = []
+    table_results = []
+    # name = 'Sub-Class C Tables'
+
+    results = []
+
+    results.append(dict(name='row 1 name column', value='value column'))
+    results.append(dict(name='row 2 name column', value='value column'))
+
+    # Create a table from the returned dictionary of items
+    table_results = TwoColTable(results)
+
+    return render_template('basic_table.html',
+                            results=table_results,
+                            form_title='Sub-Class C Tables')
 
 
 

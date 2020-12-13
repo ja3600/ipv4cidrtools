@@ -118,7 +118,15 @@ class ExcludeForm(Form):
 def index():
     name = 'Subnet Table'
     return render_template('index.html', title='Subnet Table')
-    
+
+
+
+@app.route('/subc')
+def index():
+    name = 'Sub-Class C Tables'
+    return render_template('subc.html', title='Sub-Class C Tables')
+
+
 
 @app.route("/disector", methods=['GET', 'POST'])
 def disect_tool():

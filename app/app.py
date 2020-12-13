@@ -50,12 +50,21 @@ working_exclude = "192.168.0.32/27"
 
 # Declare classes, tables/forms
 
+
+# generic two column table with column 1 "name" and column 2 "value"
 class TwoColTable(Table):
-    colhead1 = Col(Table[0]['colhead1'])
-    colhead2 = Col(Table[0]['colhead2'])
     name = Col('item')     # header for column 1
     value = Col('value')   # header for column 2
     classes = ['table', 'table-sm']
+
+
+
+class SubCTable(Table):
+    network = Col('network')        # header for column 1
+    hosts = Col('host ranges')      # header for column 2
+    classes = ['table', 'table-sm']
+
+
 
 class SubnetTable(Table):
     subid = Col('#')
@@ -122,7 +131,6 @@ def index():
     return render_template('index.html', form_title=name)
 
 
-
 @app.route('/subc')
 def subc_tool():
 
@@ -132,12 +140,11 @@ def subc_tool():
 
     results = []
 
-    results.append(dict(colhead1='network', colhead2='host range'))
-    results.append(dict(name='row 1 name column', value='value column'))
-    results.append(dict(name='row 2 name column', value='value column'))
+    results.append(dict(network='.0', hosts='1-6'))
+    results.append(dict(network='.8', hosts='9-14'))
 
     # Create a table from the returned dictionary of items
-    table_results = TwoColTable(results)
+    table_results = SubCTable(results)
 
     return render_template('basic_table.html',
                             results=table_results,

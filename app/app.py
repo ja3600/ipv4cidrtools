@@ -50,9 +50,9 @@ working_exclude = "192.168.0.32/27"
 
 # Declare classes, tables/forms
 
-class TwoColTable(Table, name=name, value=value):
-    name = Col(name)     # header for column 1
-    value = Col(value)   # header for column 2
+class TwoColTable(Table, name=col1_name, value=col2_name):
+    #name = Col(col1_name)     # header for column 1
+    #value = Col(col1_name)   # header for column 2
     classes = ['table', 'table-sm']
 
 class SubnetTable(Table):

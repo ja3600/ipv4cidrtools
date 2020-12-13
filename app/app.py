@@ -51,6 +51,8 @@ working_exclude = "192.168.0.32/27"
 # Declare classes, tables/forms
 
 class TwoColTable(Table):
+    colhead1 = Col(Table.colhead1)
+    colhead2 = Col(Table.colhead2)
     name = Col('item')     # header for column 1
     value = Col('value')   # header for column 2
     classes = ['table', 'table-sm']
@@ -130,6 +132,7 @@ def subc_tool():
 
     results = []
 
+    results.append(dict(colhead1='network', colhead2='host range'))
     results.append(dict(name='row 1 name column', value='value column'))
     results.append(dict(name='row 2 name column', value='value column'))
 

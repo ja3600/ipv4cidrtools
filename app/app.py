@@ -122,7 +122,7 @@ def index():
 
 
 @app.route('/subc')
-def index():
+def subc():
     name = 'Sub-Class C Tables'
     return render_template('subc.html', title='Sub-Class C Tables')
 

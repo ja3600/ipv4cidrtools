@@ -51,8 +51,8 @@ working_exclude = "192.168.0.32/27"
 # Declare classes, tables/forms
 
 class TwoColTable(Table):
-    colhead1 = Col(Table.colhead1)
-    colhead2 = Col(Table.colhead2)
+    colhead1 = Col(Table[0]['colhead1'])
+    colhead2 = Col(Table[0]['colhead2'])
     name = Col('item')     # header for column 1
     value = Col('value')   # header for column 2
     classes = ['table', 'table-sm']

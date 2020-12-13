@@ -127,7 +127,7 @@ class ExcludeForm(Form):
 @app.route('/')
 @app.route('/index')
 def index():
-    name = 'Subnet Table'
+    name = 'Subnet Tables'
     return render_template('index.html', form_title=name)
 
 
@@ -138,11 +138,13 @@ def subc_tool():
     table_results = []
     name = 'Sub-Class C Tables'
 
-    results = []
+    for hostbits in range(25,30):
+        subnetbits = 32 - hostbits
+        subnetblocksize = 2 ^ subnetbits
 
-    results.append(dict(network='.0', hosts='1-6'))
-    results.append(dict(network='.8', hosts='9-14'))
-
+        for block in range(0, 256, subnetblocksize):
+            results.append(dict(network=block, hosts=block+1))
+    
     # Create a table from the returned dictionary of items
     table_results = SubCTable(results)
 
@@ -157,6 +159,7 @@ def disect_tool():
     form = BaseForm(request.form)
     results = []
     table_results = []
+    name = 'Disector'
 
     # must use the global keyword for these global variable
     global working_ipv4
@@ -192,7 +195,7 @@ def disect_tool():
                             results=table_results,
                             working_ipv4=working_ipv4,
                             working_prefixlen=working_prefixlen,
-                            form_title='Disector')
+                            form_title=name)
 
 
 @app.route("/subnet", methods=['GET', 'POST'])
@@ -200,6 +203,7 @@ def subnet_tool():
     form = SubnetForm(request.form)
     results = []
     table_results = []
+    name = 'Subnets'
 
     # must use the global keyword for these global variable
     global working_ipv4
@@ -236,7 +240,7 @@ def subnet_tool():
                             results=table_results,
                             working_ipv4=working_ipv4,
                             working_prefixlen=working_prefixlen,
-                            form_title='Subnets')
+                            form_title=name)
 
 
 
@@ -245,6 +249,7 @@ def subnet_csv_tool():
     form = SubnetFormCSV(request.form)
     results = []
     table_results = []
+    name = 'Subnets-csv'
 
     # must use the global keyword for these global variable
     global working_ipv4
@@ -282,7 +287,7 @@ def subnet_csv_tool():
                             results=table_results,
                             working_ipv4=working_ipv4,
                             working_prefixlen=working_prefixlen,
-                            form_title='Subnets-csv')
+                            form_title=name)
 
 
 @app.route("/supernet", methods=['GET', 'POST'])
@@ -290,6 +295,7 @@ def supernet_tool():
     form = BaseForm(request.form)
     results = []
     table_results = []
+    name = 'Subnets-csv'
 
     # must use the global keyword for these global variable
     global working_ipv4
@@ -325,7 +331,7 @@ def supernet_tool():
                             results=table_results,
                             working_ipv4=working_ipv4,
                             working_prefixlen=working_prefixlen,
-                            form_title='Supernets')
+                            form_title=name)
 
 
 @app.route("/summary", methods=['GET', 'POST'])
@@ -333,6 +339,7 @@ def summary_tool():
     form = SummaryForm(request.form)
     results = []
     table_results = []
+    name = 'Summarization'
 
     print (form.errors)
 
@@ -359,7 +366,7 @@ def summary_tool():
     return render_template('summary_form.html',
                             form=form,
                             results=table_results,
-                            form_title='Summarization')
+                            form_title=name)
 
 
 

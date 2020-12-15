@@ -344,12 +344,13 @@ def summary_tool():
     table_results = []
     name = 'Summarization'
 
+    global working_list
+
     print (form.errors)
 
     if request.method == 'POST':
         ip_list = request.form['ip_list']
         # print("LIST:", ip_list.split('\r\n'))
-
 
         if form.validate():
         # Save the comment here.
@@ -357,6 +358,7 @@ def summary_tool():
             flash('Summarization Results.')
 
             results = ip_summary(ip_list)
+            working_list = ip_list
 
             print(results)
             # Create a table from the returned dictionary of items

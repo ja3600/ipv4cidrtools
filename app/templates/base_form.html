@@ -11,19 +11,19 @@
       <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="ipv4" name="ipv4" placeholder="IPv4" value={{working_ipv4}}>
 
       <label class="mr-sm-2 mb-0 sr-only" for="prefixlen">Base prefix length:</label>
-      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="prefixlen" name="prefixlen" placeholder="base prefix len" value={{working_prefixlen}}>
+      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="prefixlen" name="prefixlen" placeholder="base prefix len" value={{working_prefixlen}}></input>
 
       {% if form_title == 'Subnets' %}
       <label class="mr-sm-2 mb-0 sr-only" for="new_prefixlen">New prefix length:</label>
-      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="new_prefixlen" name="new_prefixlen" placeholder="new prefix len" value='26'>
+      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="new_prefixlen" name="new_prefixlen" placeholder="new prefix len" value='26'></input>
       <label class="mr-sm-2 mb-0 sr-only" for="new_prefixlen">New prefix length:</label>
       {% endif %}
 
       {% if form_title == 'Subnets-csv' %}
       <label class="mr-sm-2 mb-0 sr-only" for="new_prefixlen">New prefix length:</label>
-      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="new_prefixlen" name="new_prefixlen" placeholder="new prefix len" value='26'>
+      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="new_prefixlen" name="new_prefixlen" placeholder="new prefix len" value='26'></input>
       <label class="mr-sm-2 mb-0 sr-only" for="new_prefixlen">New prefix length:</label>
-      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="netbox_text" name="netbox_text" placeholder="netbox prefix import", value=", active">
+      <input type="text" class="form-control mr-sm-2 mb-2 mb-sm-0" id="netbox_text" name="netbox_text" placeholder="netbox prefix import", value=", active"></input>
       {% endif %}
 
 

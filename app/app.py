@@ -46,6 +46,7 @@ working_ipv4 = "192.168.10.0"
 working_prefixlen = 24
 working_target = "192.168.0.0/24"
 working_exclude = "192.168.0.32/27"
+working_list = "192.168.0.0/24\n192.168.1.0/24"
 
 
 # Declare classes, tables/forms
@@ -368,6 +369,7 @@ def summary_tool():
     return render_template('summary_form.html',
                             form=form,
                             results=table_results,
+                            working_list=working_list,
                             form_title=name)
 
 

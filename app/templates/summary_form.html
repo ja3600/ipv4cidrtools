@@ -9,7 +9,10 @@
   <form action="" method="post" role="form" class="form-inline">
     {{ form.csrf }}
   <label class="mr-sm-2 mb-0" for="ip_list">List of subnets:</label>
-  <textarea autofocus required class="form-control mr-sm-4 mt-2 mb-2 mb-sm-2" rows="8" cols="30" name="ip_list", type="text" placeholder="list of cidrs, one per line..."> helloe </textarea>
+  
+  <textarea autofocus required class="form-control mr-sm-4 mt-2 mb-2 mb-sm-2" rows="8" cols="30" name="ip_list",
+               type="text" placeholder="list of cidrs, one per line...">{{ working_list }}</textarea>
+
       <button type="submit" class="btn btn-success">Submit</button>
   </form>
 

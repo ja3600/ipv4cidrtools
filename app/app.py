@@ -19,6 +19,7 @@
 from secrets import token_urlsafe
 from flask import Flask, render_template, flash, request
 
+from flask import Flask, request, jsonify
 import flask_excel as excel
 
 from wtforms import Form, StringField, IntegerField, TextAreaField, validators
@@ -42,6 +43,8 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
 
+    
+excel.init_excel(app)
 
 # Global variables
 
@@ -140,6 +143,9 @@ def index():
 
 @app.route("/upload", methods=['GET', 'POST'])
 def upload_file():
+
+
+
     if request.method == 'POST':
         return jsonify({"result": request.get_array(field_name='file')})
     return '''
@@ -451,7 +457,7 @@ def exclude_tool():
 
 
 if __name__ == "__main__":
-    
-    excel.init_excel(app)
+
+    excel.init_excel(app) # required since version 0.0.7
     app.run(host='0.0.0.0', port = 5000)
     

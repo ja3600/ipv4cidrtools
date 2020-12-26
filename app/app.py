@@ -18,8 +18,12 @@
 
 from secrets import token_urlsafe
 from flask import Flask, render_template, flash, request
+
+import flask_excel as excel
+
 from wtforms import Form, StringField, IntegerField, TextAreaField, validators
 from flask_table import Table, Col
+
 
 # containerized app
 # from .ipip import *
@@ -130,6 +134,30 @@ class ExcludeForm(Form):
 def index():
     name = 'Subnet Tables'
     return render_template('index.html', form_title=name)
+
+
+
+
+@app.route("/upload", methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        return jsonify({"result": request.get_array(field_name='file')})
+    return '''
+    <!doctype html>
+    <title>Upload an excel file</title>
+    <h1>Excel file upload (csv, tsv, csvz, tsvz only)</h1>
+    <form action="" method=post enctype=multipart/form-data><p>
+    <input type=file name=file><input type=submit value=Upload>
+    </form>
+    '''
+
+
+
+
+
+
+
+
 
 
 @app.route('/subc')
@@ -423,4 +451,7 @@ def exclude_tool():
 
 
 if __name__ == "__main__":
+    
+    excel.init_excel(app)
     app.run(host='0.0.0.0', port = 5000)
+    

@@ -1,10 +1,9 @@
-# Use for testing
+# Comment these out if deploy via Openshift web
 # FROM python:3.8-slim
-# Use python:3.8-ubi7 for Openshift
-FROM python:3.8-ubi7
-LABEL version="1.0"
-LABEL app="cidrtools"
-LABEL maintaner="https://github.com/ja3600/cidrtools.git"
+# LABEL version="1.0"
+# LABEL app="cidrtools"
+# LABEL maintaner="https://github.com/ja3600/cidrtools.git"
+
 RUN mkdir /app
 WORKDIR /app
 ADD requirements.txt /app

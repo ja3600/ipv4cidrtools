@@ -5,13 +5,16 @@
 # LABEL maintaner="https://github.com/ja3600/cidrtools.git"
 
 RUN mkdir /app
-WORKDIR /app
-ADD requirements.txt /app
+COPY app/* /app
+ADD requirements.txt /requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
-ADD . /app
 EXPOSE 5000
-RUN chmod +x ./entrypoint.sh
-ENTRYPOINT ["sh", "entrypoint.sh"]
+USER 1001
+WORKDIR /app
+CMD ["python", "app.py", "5000"]
+
+#RUN chmod +x ./entrypoint.sh
+#ENTRYPOINT ["sh", "entrypoint.sh"]
 
 
 # Use for development

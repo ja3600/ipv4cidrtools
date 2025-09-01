@@ -10,8 +10,6 @@ ipip.py -- netaddr functions used by cidrtools application
 from netaddr import IPNetwork, IPAddress, cidr_merge
 #from netaddr import *
 
-# Basic python stuff
-import sys
 
 
 
@@ -119,13 +117,3 @@ def ip_disector(cidr):
 
 
 
-def main(args):
-    # Uncomment to trouble-shoot
-    # print('Number of arguments:', len(args))
-    # print('Argument List:', str(args))
-
-    print(ip_disector(args[0]))
-
-
-if __name__ == "__main__":
-    main(sys.argv[1:])  # to exclude argv[0], which is the filename, do this: main(sys.argv[1:])

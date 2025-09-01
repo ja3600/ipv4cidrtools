@@ -9,9 +9,6 @@ __pycache__/
 instance/
 .webassets-cache
 
-# bootstrap static files
-static/
-
 # other files
 .venv/
 

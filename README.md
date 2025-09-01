@@ -18,7 +18,21 @@ The results are provided in an HTML table, so data is easily cut/paste into a sp
 Create forms to generate complex IP address design schemas base on a design template. For example, a design template could represent a branch office, floors in a building or large campus.  The addressing schemas could then be imported into an IPAM solution such as Netbox or Infoblox.  
 
 
-# Container Install and Setup
+# Testing in macOS
+
+Make sure your system is already setup with Python 3.12 and git
+
+Clone the repo (it will create a application folder called "cidrtools")
+    
+    git clone https://github.com/ja3600/cidrtools.git
+
+Change into the directory:
+
+    cd cidrtools
+
+
+
+# Container Install and Setup (these are probably outdated)
 
 Used this great tutorial:
 https://blog.entirely.digital/docker-gunicorn-and-flask/
@@ -73,7 +87,8 @@ Delete all containers and images:
 
 
 
-# Installation Instructions without running inside a container
+
+# Legacy instructions that worked in 2020
 
 These instructions are based on CentOS Linux release 7.7
 These steps assume your system already has python3 and pip installed

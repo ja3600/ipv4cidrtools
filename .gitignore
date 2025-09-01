@@ -11,6 +11,9 @@ instance/
 
 # other files
 .venv/
+venv/
+ENV/
+env/
 
 *.pyc
 __pycache__/

@@ -32,27 +32,9 @@ Create forms to generate complex IP address design schemas base on a design temp
 
 ## Create a virtual environment, activate and use Pip to install required Python packages:
 
-ipv4cidrtools %
-ipv4cidrtools %source venv/bin/activate
-(venv) ipv4cidrtools %pip install -r requirements.txt
-
-    Package      Version
-    ------------ -------
-    babel        2.17.0
-    blinker      1.9.0
-    click        8.2.1
-    Flask        3.1.2
-    flask-babel  4.0.0
-    Flask-Table2 0.1.0
-    itsdangerous 2.2.0
-    Jinja2       3.1.6
-    MarkupSafe   3.0.2
-    netaddr      1.3.0
-    pip          25.2
-    pytz         2025.2
-    Werkzeug     3.1.3
-    WTForms      3.2.1
-
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 
 ## Run it baby! 
 

@@ -20,29 +20,27 @@ Create forms to generate complex IP address design schemas base on a design temp
 
 # Testing in macOS
 
-## Make sure your system is already setup with Python 3.12, pip and git
+Make sure your system is already setup with Python 3.12, pip and git
 
-## Clone the repo (it will create a application folder called "cidrtools")
+Clone the repo (it will create a application folder called "cidrtools")
     
     git clone https://github.com/ja3600/ipv4cidrtools.git
 
-## Change into the directory:
+Change into the directory:
 
     cd ipv4cidrtools
 
-## Create a virtual environment, activate and use Pip to install required Python packages:
+Create a virtual environment, activate and use Pip to install required Python packages:
 
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
 
-## Run it baby! 
+Run it!
 
-(venv) ipv4cidrtools %flask run
+    flask run
 
-## point your local browser to
-
-http://127.0.0.1:5000
+Point your local browser to http://127.0.0.1:5000
 
 
 

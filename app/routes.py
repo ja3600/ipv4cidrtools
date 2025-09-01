@@ -3,12 +3,6 @@ from .forms import BaseForm, SubnetForm, SubnetFormCSV, SummaryForm, TwoColTable
 from .ipip import ip_disector, ip_subnet, ip_supernet, ip_summary
 
 
-# Global variables
-
-#default subnet
-working_ipv4 = "192.168.10.0"
-working_prefixlen = 24
-
 main = Blueprint('main', __name__)
 
 
@@ -27,9 +21,8 @@ def disect_tool():
     results = []
     table_results = []
 
-    # must use the global keyword for these global variable
-    global working_ipv4
-    global working_prefixlen
+    working_ipv4 = '192.168.1.0'
+    working_prefixlen = 24
 
     print (form.errors)
 
@@ -70,9 +63,8 @@ def subnet_tool():
     results = []
     table_results = []
 
-    # must use the global keyword for these global variable
-    global working_ipv4
-    global working_prefixlen
+    working_ipv4 = '192.168.1.0'
+    working_prefixlen = 24
 
     print (form.errors)
 
@@ -114,9 +106,8 @@ def subnet_csv_tool():
     results = []
     table_results = []
 
-    # must use the global keyword for these global variable
-    global working_ipv4
-    global working_prefixlen
+    working_ipv4 = '192.168.1.0'
+    working_prefixlen = 24
 
     print (form.errors)
 
@@ -159,9 +150,8 @@ def supernet_tool():
     results = []
     table_results = []
 
-    # must use the global keyword for these global variable
-    global working_ipv4
-    global working_prefixlen
+    working_ipv4 = '192.168.1.0'
+    working_prefixlen = 24
 
     print (form.errors)
 

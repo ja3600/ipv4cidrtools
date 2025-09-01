@@ -32,9 +32,9 @@ Create forms to generate complex IP address design schemas base on a design temp
 
 ## Create a virtual environment, activate and use Pip to install required Python packages:
 
-ipv4cidrtools %python3 -m venv venv
+ipv4cidrtools %
 ipv4cidrtools %source venv/bin/activate
-(venv) ipv4cidrtools %pip install Flask netaddr wtforms flask_table2
+(venv) ipv4cidrtools %pip install -r requirements.txt
 
     Package      Version
     ------------ -------

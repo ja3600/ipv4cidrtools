@@ -11,3 +11,9 @@ instance/
 
 # bootstrap static files
 static/
+
+# other files
+.venv/
+
+*.pyc
+__pycache__/

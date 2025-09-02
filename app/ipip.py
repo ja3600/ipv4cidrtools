@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 '''
-ipip.py -- netaddr functions used by cidrtools application
+ipip.py -- netaddr functions used by ipv4cidrtools app
 
 
 '''
